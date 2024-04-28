@@ -9,14 +9,14 @@ const App = () => {
   const positive = (good / all) * 100
 
   return (
-    <div>
+    <>
       <Header text="give feedback"/>
       <Button text="good" handleClick={() => setGood(good + 1)}/>
       <Button text="neutral" handleClick={() => setNeutral(neutral + 1)}/>
       <Button text="bad" handleClick={() => setBad(bad + 1)}/>
       <Header text="statics"/>
       <Data all={all} good={good} neutral={neutral} bad={bad} average={average} positive={positive}/>
-    </div>
+    </>
   )
 }
 
@@ -35,21 +35,28 @@ const Button = (props) => (
 // I already created the statistic component in the previous step (1.8) 
 const Statistics = (props) => {
   return ( 
-    <div>
+    <table>  
+      <tbody>
         <StatisticsLine name="good" count={props.good}/>
         <StatisticsLine name="neutral" count={props.neutral}/>
         <StatisticsLine name="bad" count={props.bad}/>
         <StatisticsLine name="all" count={props.all}/>
         <StatisticsLine name="average" count={props.average}/>
         <StatisticsLine name="positive" count={props.positive + " %"}/>
-    </div>
+      </tbody>
+    </table>
   )  
 }
 
 const StatisticsLine = (props) => (
-  <div>
-    {props.name} {props.count}
-  </div>
+  <tr>
+    <td>
+      {props.name}
+    </td>
+    <td>
+      {props.count}
+    </td>
+  </tr>
 )
 
 const Data = (props) => {
