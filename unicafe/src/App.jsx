@@ -15,12 +15,7 @@ const App = () => {
       <Button text="neutral" handleClick={() => setNeutral(neutral + 1)}/>
       <Button text="bad" handleClick={() => setBad(bad + 1)}/>
       <Header text="statics"/>
-      <Statistics name="good" count={good}/>
-      <Statistics name="neutral" count={neutral}/>
-      <Statistics name="bad" count={bad}/>
-      <Statistics name="all" count={all}/>
-      <Statistics name="average" count={average}/>
-      <Statistics name="positive" count={positive + " %"}/>
+      <Data all={all} good={good} neutral={neutral} bad={bad} average={average} positive={positive}/>
     </div>
   )
 }
@@ -43,5 +38,26 @@ const Statistics = (props) => (
     {props.name} {props.count}
   </div>
 )
+
+const Data = (props) => {
+  if (props.all == 0) {
+    return (
+      <div>
+        No feedback given
+      </div>
+    )
+  } else if (props.all > 0) {
+    return (
+      <div>
+        <Statistics name="good" count={props.good}/>
+        <Statistics name="neutral" count={props.neutral}/>
+        <Statistics name="bad" count={props.bad}/>
+        <Statistics name="all" count={props.all}/>
+        <Statistics name="average" count={props.average}/>
+        <Statistics name="positive" count={props.positive + " %"}/>
+      </div>
+    )
+  }
+}
 
 export default App
