@@ -15,12 +15,12 @@ const App = () => {
       <Button text="neutral" handleClick={() => setNeutral(neutral + 1)}/>
       <Button text="bad" handleClick={() => setBad(bad + 1)}/>
       <Header text="statics"/>
-      <Statistic name="good" count={good}/>
-      <Statistic name="neutral" count={neutral}/>
-      <Statistic name="bad" count={bad}/>
-      <Statistic name="all" count={all}/>
-      <Statistic name="average" count={average}/>
-      <Statistic name="positive" count={positive + " %"}/>
+      <Statistics name="good" count={good}/>
+      <Statistics name="neutral" count={neutral}/>
+      <Statistics name="bad" count={bad}/>
+      <Statistics name="all" count={all}/>
+      <Statistics name="average" count={average}/>
+      <Statistics name="positive" count={positive + " %"}/>
     </div>
   )
 }
@@ -37,7 +37,8 @@ const Button = (props) => (
   </button>
 )
 
-const Statistic = (props) => (
+// I already created the statistic component in the previous step (1.8) 
+const Statistics = (props) => (
   <div>
     {props.name} {props.count}
   </div>
