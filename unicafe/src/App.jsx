@@ -33,7 +33,20 @@ const Button = (props) => (
 )
 
 // I already created the statistic component in the previous step (1.8) 
-const Statistics = (props) => (
+const Statistics = (props) => {
+  return ( 
+    <div>
+        <StatisticsLine name="good" count={props.good}/>
+        <StatisticsLine name="neutral" count={props.neutral}/>
+        <StatisticsLine name="bad" count={props.bad}/>
+        <StatisticsLine name="all" count={props.all}/>
+        <StatisticsLine name="average" count={props.average}/>
+        <StatisticsLine name="positive" count={props.positive + " %"}/>
+    </div>
+  )  
+}
+
+const StatisticsLine = (props) => (
   <div>
     {props.name} {props.count}
   </div>
@@ -48,14 +61,7 @@ const Data = (props) => {
     )
   } else if (props.all > 0) {
     return (
-      <div>
-        <Statistics name="good" count={props.good}/>
-        <Statistics name="neutral" count={props.neutral}/>
-        <Statistics name="bad" count={props.bad}/>
-        <Statistics name="all" count={props.all}/>
-        <Statistics name="average" count={props.average}/>
-        <Statistics name="positive" count={props.positive + " %"}/>
-      </div>
+      <Statistics good={props.good} neutral={props.neutral} bad={props.bad} all={props.all} average={props.average} positive={props.positive}/>
     )
   }
 }
